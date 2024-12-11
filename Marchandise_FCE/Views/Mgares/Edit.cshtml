@@ -1,0 +1,49 @@
+﻿@model Marchandise_FCE.Models.Mgare
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Modification</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="codegare" />
+            <div class="form-group">
+                <label asp-for="nomgare" class="control-label"></label>
+                <input asp-for="nomgare" class="form-control" />
+                <span asp-validation-for="nomgare" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="abrevnom" class="control-label"></label>
+                <input asp-for="abrevnom" class="form-control" />
+                <span asp-validation-for="abrevnom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="kilometrage" class="control-label"></label>
+                <input asp-for="kilometrage" class="form-control" />
+                <span asp-validation-for="kilometrage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="codezone" class="control-label"></label>
+                <select asp-for="codezone" class="form-control" asp-items="ViewBag.codezone"></select>
+                <span asp-validation-for="codezone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-outline-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

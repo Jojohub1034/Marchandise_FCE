@@ -1,0 +1,29 @@
+﻿body {
+    background-image: url(../img/Fianarantsoa_03.jpg);
+    background-size: cover;
+    background-position: center center;
+   
+}
+
+.table {
+   
+
+}    
+.table , thead ,td {
+    text-align : center ;
+    
+}
+
+
+
+
+.modif {
+    height: 30px;
+    weight: 30px;
+    
+}
+
+.delete {
+    height:30px;
+    weight: 30px;
+}

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Marchandise_FCE.Models.Mgare>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link href="~/css/styles.css" rel="stylesheet"/>
+<h1>Listes des gares</h1>
+
+
+   
+
+<form method="get" asp-action="Index">
+    <a asp-action="Create" class="btn btn-outline-primary">Nouveau</a> |
+    <input type="text" name="recheche" placeholder="Recherche..." />
+    <button type="submit" class="btn btn-primary">Rechercher</button>
+</form>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Code gare
+            </th>
+            <th>
+                Nom
+            </th>
+            <th>
+                Abreviation
+            </th>
+            <th>
+                Kilomètrage
+            </th>
+            <th>
+                Zone
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.codegare)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nomgare)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.abrevnom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.kilometrage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zones.nomzone)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.codegare"><img class="modif" src="~/img/edit.png" /></a> |
+                    <a asp-action="Delete" asp-route-id="@item.codegare"><img class="delete" src="~/img/delete.jpg" /></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

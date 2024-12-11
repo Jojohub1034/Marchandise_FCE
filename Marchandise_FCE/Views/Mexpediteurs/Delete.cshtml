@@ -1,0 +1,39 @@
+﻿@model Marchandise_FCE.Models.Mexpediteur
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Suppression</h1>
+
+<h3>Vous êtes vraiment sûr de supprimer ce client ?</h3>
+<div>
+    <h4>Mexpediteur</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.nomexp)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.nomexp)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.cin)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.cin)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.tel)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.tel)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="idexp" />
+        <input type="submit" value="Delete" class="btn btn-outline-danger" /> |
+        <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+    </form>
+</div>

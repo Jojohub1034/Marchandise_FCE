@@ -1,0 +1,48 @@
+﻿@model Marchandise_FCE.Models.Mexpediteur
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Ajout d'un expediteur </h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="idexp" class="control-label"></label>
+                <input asp-for="idexp" class="form-control" />
+                <span asp-validation-for="idexp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="nomexp" class="control-label"></label>
+                <input asp-for="nomexp" class="form-control" />
+                <span asp-validation-for="nomexp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cin" class="control-label"></label>
+                <input asp-for="cin" class="form-control" />
+                <span asp-validation-for="cin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tel" class="control-label"></label>
+                <input asp-for="tel" class="form-control" />
+                <span asp-validation-for="tel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-outline-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Marchandise_FCE.Models.Mtarif>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link href="~/css/styles.css" rel="stylesheet" />
+<h1>Liste des tarifs</h1>
+
+
+    
+
+<form method="get" asp-action="Index">
+    <a asp-action="Create" class="btn btn-outline-primary">Nouveau</a> | 
+    <input type="text" name="recheche" placeholder="Recherche..." />
+    <button type="submit" class="btn btn-primary">Rechercher</button>
+</form>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Identifiant
+            </th>
+            <th>
+                Prix par kg
+            </th>
+            <th>
+                Zone
+            </th>
+            <th>
+                Catégorie
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idtarif)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prixkilo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zone.nomzone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categorie.designcat)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.idtarif"><img class="modif" src="~/img/edit.png" /></a> |
+                    <a asp-action="Delete" asp-route-id="@item.idtarif"><img class="delete" src="~/img/delete.jpg" /></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

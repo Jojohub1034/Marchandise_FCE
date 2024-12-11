@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Marchandise_FCE.Models.Mexpediteur>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link href="~/css/styles.css" rel="stylesheet" /> 
+<h1>Listes des expediteurs</h1>
+
+
+    
+
+<form method="get" asp-action="Index">
+    <a asp-action="Create" class="btn btn-outline-primary">Nouveau</a>  |
+    <input type="text" name="recheche" placeholder="Recherche..." />
+    <button type="submit" class="btn btn-primary">Rechercher</button>
+</form>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Identifiant
+            </th>
+            <th>
+                Nom et prenom
+            </th>
+            <th>
+                CIN
+            </th>
+            <th>
+                Téléphone
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idexp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nomexp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cin)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tel)
+            </td>
+            <td>
+                    <a asp-action="Edit" asp-route-id="@item.idexp"><img class="modif" src="~/img/edit.png" /></a> |
+
+                    <a asp-action="Delete" asp-route-id="@item.idexp"><img class="delete" src="~/img/delete.jpg" /></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

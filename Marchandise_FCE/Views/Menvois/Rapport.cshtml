@@ -1,0 +1,45 @@
+﻿@model IEnumerable<dynamic>
+@{
+    ViewBag.Title = "Rapport des Marchandises par Gare";
+}
+
+<h2>Rapport des Marchandises par Gare</h2>
+
+<!-- Formulaire de filtrage -->
+@using (Html.BeginForm("Index", "Report", FormMethod.Get))
+{
+    <div>
+        <label for="selectedMonth">Sélectionner le mois :</label>
+        @Html.DropDownList("mois", ViewBag.Mois as SelectList, "Choisir un mois", new { @class = "form-control" })
+    </div>
+
+    <div>
+        <label for="selectedGare">Sélectionner la gare :</label>
+        @Html.DropDownList("garenom", ViewBag.Gares as SelectList, "Choisir une gare", new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Filtrer</button>
+}
+
+<!-- Tableau des rapports -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>Référence Marchandise</th>
+            <th>Nature de la Marchandise</th>
+            <th>Gare</th>
+            <th>Poids Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.MarchandiseRef</td>
+                <td>@item.MarchandiseNature</td>
+                <td>@item.GareNom</td>
+                <td>@item.PoidsTotal</td>
+            </tr>
+        }
+    </tbody>
+</table>

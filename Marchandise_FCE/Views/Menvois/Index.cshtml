@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Marchandise_FCE.Models.Menvoi>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link href="~/css/styles.css" rel="stylesheet" />
+<h1>Liste d'envois</h1>
+
+
+
+<form method="get" asp-action="Index">
+
+    <a asp-action="Create" class="btn btn-outline-primary">Nouveau</a> |
+    <a asp-action="Facture" class="btn btn-outline-success">Générer une Facture</a> |
+    <a asp-action="Rapport" class="btn btn-outline-secondary">Rapport mensuel</a> |
+    <input type="text" name="recheche" placeholder="Recherche..." />
+    <button type="submit" class="btn btn-primary">Rechercher</button>
+</form>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Numéro envoi
+            </th>
+            <th>
+                Expediteur
+            </th>
+            <th>
+                Gare
+            </th>
+            <th>
+                Nombre envoi
+            </th>
+            <th>
+                Nature
+            </th>                       
+            <th>
+                Poids
+            </th>
+            <th>
+                Montant 
+            </th>
+            <th>
+                Emballage
+            </th>
+            
+            <th>
+                Date
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.numenvoi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Expediteur.nomexp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gare.abrevnom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nbenvoi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marchandise.nature)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.poids)
+            </td>
+                
+            <td>
+                @Html.DisplayFor(modelItem => item.montant)
+            </td>
+             <td>
+                @Html.DisplayFor(modelItem => item.type_embal)
+            </td>
+
+            <td>
+                    @Html.DisplayFor(modelItem => item.date)
+            </td>
+                
+           
+            
+            <td>
+                    
+                    <a asp-action="Edit" asp-route-id="@item.numenvoi"><img class="modif" src="~/img/edit.png" /></a> |
+                    <a asp-action="Delete" asp-route-id="@item.numenvoi"><img class="delete" src="~/img/delete.jpg" /></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
